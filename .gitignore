@@ -22,3 +22,27 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+server/.env
+# Backend local dependencies and uploaded files
+server/node_modules/
+server/uploads/
+
+# Playwright generated output
+test-results/
+playwright-report/
+
+# Local resume and generated audit artifacts
+/resume.pdf
+/css-audit-report.txt
+/css-exact-duplicates.txt
+/css-scope-safe-duplicates.txt
+/make_visual_audit.py
+/ui-screenshots.zip
+/visual-audit-after-sidebar-fix.zip
+/visual-audit-screenshots.zip
+/visual-audit.png
+
+# Local CSS recovery backups
+/src/App.backup.css
+/src/App.before-*.css
+/src/App.broken-build.css
