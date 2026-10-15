@@ -106,6 +106,8 @@ router.post('/analyze', upload.single('resume'), async (req, res) => {
 })
 
 router.use((error, req, res, next) => {
+  // Keep four parameters so Express recognizes error-handling middleware.
+  void next
   if (error instanceof multer.MulterError) {
     return res.status(400).json({
       success: false,

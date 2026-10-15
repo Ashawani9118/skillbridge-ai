@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import session from 'express-session'
 import 'dotenv/config'
+import process from 'node:process'
 import githubAnalysisRouter from './routes/githubAnalysis.js'
 import resumeAnalysisRouter from './routes/resumeAnalysis.js'
 

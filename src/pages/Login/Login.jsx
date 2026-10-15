@@ -7,7 +7,11 @@ function Login() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
 
-  const [error, setError] = useState('')
+  const [error, setError] = useState(() =>
+    searchParams.get('github') === 'error'
+      ? 'GitHub login failed. Please try again.'
+      : ''
+  )
   const [loading, setLoading] = useState(false)
   const [githubLoading, setGithubLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
@@ -16,13 +20,7 @@ function Login() {
     const githubStatus = searchParams.get('github')
 
     if (githubStatus === 'success') {
-      setGithubLoading(false)
       navigate('/dashboard', { replace: true })
-    }
-
-    if (githubStatus === 'error') {
-      setGithubLoading(false)
-      setError('GitHub login failed. Please try again.')
     }
   }, [searchParams, navigate])
 

@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/test'
-import path from 'path'
 
 test('Resume Analysis should upload and analyze a resume', async ({ page }) => {
   await page.addInitScript(() => {

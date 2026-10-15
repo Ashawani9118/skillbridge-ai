@@ -2,8 +2,11 @@ import { useRef, useState } from 'react'
 import '../../App.css'
 import Sidebar from '../../components/Sidebar'
 
-const RESUME_API_URL =
-  'http://127.0.0.1:5000/api/resume/analyze'
+const API_BASE_URL = (
+  import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000'
+).replace(/\/$/, '')
+
+const RESUME_API_URL = `${API_BASE_URL}/api/resume/analyze`
 
 function ResumeAnalysis() {
   const fileInputRef = useRef(null)

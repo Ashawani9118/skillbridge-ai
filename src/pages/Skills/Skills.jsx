@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import '../../App.css'
-import { logoutUser } from '../../utils/auth'
 import Sidebar from '../../components/Sidebar'
 
 function Skills() {
@@ -61,19 +60,6 @@ function Skills() {
   const focusSkill = skills.reduce((lowest, skill) =>
     skill.score < lowest.score ? skill : lowest
   )
-
-  const handleLogout = () => {
-    logoutUser()
-
-    document.body.classList.remove(
-      'dark-mode',
-      'light-mode'
-    )
-
-    document.body.classList.add('light-mode')
-
-    navigate('/')
-  }
 
   return (
     <div className="skills-page">

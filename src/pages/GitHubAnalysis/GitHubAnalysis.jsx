@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import '../../App.css'
 import Sidebar from '../../components/Sidebar'
-import useAuth from '../../hooks/useAuth'
+
+const API_BASE_URL = (
+  import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000'
+).replace(/\/$/, '')
 
 function GitHubAnalysis() {
   const [username, setUsername] = useState('')
@@ -10,21 +13,6 @@ function GitHubAnalysis() {
   const [error, setError] = useState('')
   const [analysisData, setAnalysisData] = useState(null)
 
-  const { userName, user } = useAuth()
-
-  const initials = userName
-    .split(' ')
-    .filter(Boolean)
-    .map((word) => word[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2)
-
-  const learningLevel = user?.level || 'beginner'
-
-  const formattedLevel =
-    learningLevel.charAt(0).toUpperCase() +
-    learningLevel.slice(1)
 
   // =========================
   // GITHUB ANALYSIS API
@@ -49,7 +37,7 @@ function GitHubAnalysis() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/github/analyze/${encodeURIComponent(
+        `${API_BASE_URL}/api/github/analyze/${encodeURIComponent(
           cleanUsername
         )}`
       )
